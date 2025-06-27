@@ -1,0 +1,630 @@
+{
+	"info": {
+		"_postman_id": "70d67b8b-7c42-4c2d-8f01-d10b1756a341",
+		"name": "Telecom API authentication",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "40279149"
+	},
+	"item": [
+		{
+			"name": "NCELL",
+			"item": [
+				{
+					"name": "ncell package payment",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-MOCO-AUTH-TOKEN",
+								"value": "eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE3NTA0MTA5MTEsImlhdCI6MTc1MDQwOTcxMSwiZ2VvIjoiIiwidWlkIjoiOTc0MTgwNTQwMyIsImRtZCI6ImlQaG9uZTEwLDUiLCJkcGYiOiJJT1MiLCJkaWQiOiJybURYeURnYWRNN1p1cTFLaTR0QUNWeG5TTDFLM0xmY0pjTDVlVXRsVERVPSJ9.ODSbs0e39BemuXN9KeIapsf4FruXwSHbaxdNSbGTQhY",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "X-MOCO-DEVICE",
+								"value": "9C1ED16E-CABF-47FB-9992-790F23A68D6A",
+								"type": "text"
+							},
+							{
+								"key": "X-MOCO-GEO",
+								"value": "wefe",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"TelecomPack\": {\r\n        \"mobileNumber\": \"9808031713\",\r\n        \"packages\": [\r\n            {\r\n       \"id\": \"1_day_10min_India\",\r\n        \"name\": \"Ncell Product\",\r\n        \"productType\": \"Voice Pack\",\r\n        \"amount\": \"55.0\",\r\n        \"validity\": \"10 Days\"\r\n            }\r\n        ]\r\n    },\r\n    \"CardInfo\": {\r\n      \"nameOnCard\": \"Suchit Baniya\",\r\n        \"cardNumber\": \"A1DuAbXdEPwtbIApVRxRGCkyTy1esR4wiqMvHucr9iw=\",         //working credital for visa \r\n        \"expYear\": 25,\r\n        \"expMonth\": 12,\r\n        \"mPin\": \"1HSGGEWu693GwnyMNOU3tQ==\"\r\n    }\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://test0.moco.com.np/v400/billpayment/telecom/ncell/pack",
+							"protocol": "https",
+							"host": [
+								"test0",
+								"moco",
+								"com",
+								"np"
+							],
+							"path": [
+								"v400",
+								"billpayment",
+								"telecom",
+								"ncell",
+								"pack"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Ncell package details",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-MOCO-AUTH-TOKEN",
+								"value": "eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE3NTA0MTE1MzQsImlhdCI6MTc1MDQxMDMzNCwiZ2VvIjoiIiwidWlkIjoiOTc0MTgwNTQwMyIsImRtZCI6ImlQaG9uZTEwLDUiLCJkcGYiOiJJT1MiLCJkaWQiOiJybURYeURnYWRNN1p1cTFLaTR0QUNWeG5TTDFLM0xmY0pjTDVlVXRsVERVPSJ9.lRcHQVAQTJSiMey6OoELpyauHfYdrYVDQjNjvqbgG-w",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "X-MOCO-DEVICE",
+								"value": "9C1ED16E-CABF-47FB-9992-790F23A68D6A",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{baseurl}}ncell/pack",
+							"host": [
+								"{{baseurl}}ncell"
+							],
+							"path": [
+								"pack"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ncell payment",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-MOCO-DEVICE",
+								"value": "9C1ED16E-CABF-47FB-9992-790F23A68D6A",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Telecom\": {\r\n        \"number\": \"9808031713\",\r\n        \"amount\": \"100\"\r\n    },\r\n    \"CardInfo\": {\r\n        \"nameOnCard\": \"Suchit Baniya\",\r\n        \"cardNumber\": \"A1DuAbXdEPwtbIApVRxRGCkyTy1esR4wiqMvHucr9iw=\",\r\n        \"expYear\": 25,\r\n        \"expMonth\": 12,\r\n        \"mPin\": \"YdNV49Ath90VDnc8lJ09FA==\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://test0.moco.com.np/v400/billpayment/telecom/ncell",
+							"protocol": "https",
+							"host": [
+								"test0",
+								"moco",
+								"com",
+								"np"
+							],
+							"path": [
+								"v400",
+								"billpayment",
+								"telecom",
+								"ncell"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							"const getTokenRequest = {\r",
+							"     method: 'POST',\r",
+							"    url: 'https://test0.moco.com.np/v400/user/authentication',\r",
+							"    header: {\r",
+							"        'content-type': 'application/x-www-form-urlencoded',\r",
+							"        'content-type': 'application/json',\r",
+							"        'X-MOCO-DEVICE': '9C1ED16E-CABF-47FB-9992-790F23A68D6A'\r",
+							"    },\r",
+							"  body: {\r",
+							"      mode: 'urlencoded',\r",
+							"      urlencoded: [\r",
+							"        { key: 'platform', value: 'IOS' },\r",
+							"        { key: 'model', value: 'iphone 13,2' },\r",
+							"        { key: 'id', value: '9860933917' },\r",
+							"        { key: 'mpin', value: '123456' },\r",
+							"        { key: 'pushToken', value: 'abcdef' },\r",
+							"      ]\r",
+							"  }\r",
+							"};\r",
+							"\r",
+							"pm.sendRequest(getTokenRequest, (err, response) => {\r",
+							"pm.request.headers.add({key: 'X-MOCO-AUTH-TOKEN', value: response.headers.get('X-MOCO-AUTH-TOKEN') });\r",
+							"});"
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "NTC",
+			"item": [
+				{
+					"name": "Get the NTC packages",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-MOCO-AUTH-TOKEN",
+								"value": "eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE3NTA0MTA3NjUsImlhdCI6MTc1MDQwOTU2NSwiZ2VvIjoiIiwidWlkIjoiOTc0MTgwNTQwMyIsImRtZCI6ImlQaG9uZTEwLDUiLCJkcGYiOiJJT1MiLCJkaWQiOiJybURYeURnYWRNN1p1cTFLaTR0QUNWeG5TTDFLM0xmY0pjTDVlVXRsVERVPSJ9.pMRSnz5st95UeOXO-_2Nah_jHjBh3zcvVWNnqyvxRYM",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "X-MOCO-DEVICE",
+								"value": "9C1ED16E-CABF-47FB-9992-790F23A68D6A",
+								"type": "text"
+							},
+							{
+								"key": "X-MOCO-GEO",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://test0.moco.com.np/v400/billpayment/telecom/ntcmobile/pack",
+							"protocol": "https",
+							"host": [
+								"test0",
+								"moco",
+								"com",
+								"np"
+							],
+							"path": [
+								"v400",
+								"billpayment",
+								"telecom",
+								"ntcmobile",
+								"pack"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ntc payment",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-MOCO-AUTH-TOKEN",
+								"value": "eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE3NTA0MTk1ODYsImlhdCI6MTc1MDQxODM4NiwiZ2VvIjoiIiwidWlkIjoiOTc0MTgwNTQwMyIsImRtZCI6ImlQaG9uZTEwLDUiLCJkcGYiOiJJT1MiLCJkaWQiOiJybURYeURnYWRNN1p1cTFLaTR0QUNWeG5TTDFLM0xmY0pjTDVlVXRsVERVPSJ9.0m57jExCFSCLptkuGVoTW32_rC6KIRyj20Com_mCrCU",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "X-MOCO-DEVICE",
+								"value": "9C1ED16E-CABF-47FB-9992-790F23A68D6A",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Telecom\": {\r\n        \"number\": \"9848396063\",\r\n        \"amount\": \"100\"\r\n    },\r\n    \"CardInfo\": {\r\n        \"nameOnCard\": \"Suchit Baniya\",\r\n        \"cardNumber\": \"A1DuAbXdEPwtbIApVRxRGCkyTy1esR4wiqMvHucr9iw=\",\r\n        \"expYear\": 25,\r\n        \"expMonth\": 12,\r\n        \"mPin\": \"1HSGGEWu693GwnyMNOU3tQ==\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseurl}}ntcmobile",
+							"host": [
+								"{{baseurl}}ntcmobile"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ntc package payment",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-MOCO-DEVICE",
+								"value": "9C1ED16E-CABF-47FB-9992-790F23A68D6A",
+								"type": "text"
+							},
+							{
+								"key": "X-MOCO-AUTH-TOKEN",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"TelecomPack\": {\r\n        \"mobileNumber\": \"9847396063\",\r\n        \"packages\": [\r\n            {\r\n                \"id\": \"27\",\r\n                \"name\": \"NT-NT 300 SMS Offer\",\r\n                \"productType\": \"Sms Pack\",\r\n                \"amount\": \"60.0\",\r\n                \"validity\": \"28 Days\"\r\n                \r\n            }\r\n        ]\r\n    },\r\n    \"CardInfo\": {\r\n        \"nameOnCard\": \"Suchit Baniya\",\r\n        \"expYear\": 25,\r\n        \"expMonth\": 12,\r\n        \"mPin\": \"1HSGGEWu693GwnyMNOU3tQ==\",\r\n        \"cardNumber\": \"A1DuAbXdEPwtbIApVRxRGCkyTy1esR4wiqMvHucr9iw=\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://test0.moco.com.np/v400/billpayment/telecom/ntcmobile/pack",
+							"protocol": "https",
+							"host": [
+								"test0",
+								"moco",
+								"com",
+								"np"
+							],
+							"path": [
+								"v400",
+								"billpayment",
+								"telecom",
+								"ntcmobile",
+								"pack"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							"const getTokenRequest = {\r",
+							"     method: 'POST',\r",
+							"    url: 'https://test0.moco.com.np/v400/user/authentication',\r",
+							"    header: {\r",
+							"        'content-type': 'application/x-www-form-urlencoded',\r",
+							"        'content-type': 'application/json',\r",
+							"        'X-MOCO-DEVICE': '9C1ED16E-CABF-47FB-9992-790F23A68D6A'\r",
+							"    },\r",
+							"  body: {\r",
+							"      mode: 'urlencoded',\r",
+							"      urlencoded: [\r",
+							"        { key: 'platform', value: 'IOS' },\r",
+							"        { key: 'model', value: 'iphone 13,2' },\r",
+							"        { key: 'id', value: '9860933917' },\r",
+							"        { key: 'mpin', value: '123456' },\r",
+							"        { key: 'pushToken', value: 'abcdef' },\r",
+							"      ]\r",
+							"  }\r",
+							"};\r",
+							"\r",
+							"pm.sendRequest(getTokenRequest, (err, response) => {\r",
+							"pm.request.headers.add({key: 'X-MOCO-AUTH-TOKEN', value: response.headers.get('X-MOCO-AUTH-TOKEN') });\r",
+							"});"
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "LandLine",
+			"item": [
+				{
+					"name": "landline payment",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-MOCO-AUTH-TOKEN",
+								"value": "eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE3NTA0MTA5MTEsImlhdCI6MTc1MDQwOTcxMSwiZ2VvIjoiIiwidWlkIjoiOTc0MTgwNTQwMyIsImRtZCI6ImlQaG9uZTEwLDUiLCJkcGYiOiJJT1MiLCJkaWQiOiJybURYeURnYWRNN1p1cTFLaTR0QUNWeG5TTDFLM0xmY0pjTDVlVXRsVERVPSJ9.ODSbs0e39BemuXN9KeIapsf4FruXwSHbaxdNSbGTQhY",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "X-MOCO-DEVICE",
+								"value": "9C1ED16E-CABF-47FB-9992-790F23A68D6A",
+								"type": "text"
+							},
+							{
+								"key": "X-MOCO-GEO",
+								"value": "wefe",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Telecom\": {\r\n        \"number\": \"14265361\",\r\n        \"amount\": \"100\"\r\n    },\r\n    \"CardInfo\": {\r\n        \"nameOnCard\": \"Suchit Baniya\",\r\n        \"cardNumber\": \"A1DuAbXdEPwtbIApVRxRGCkyTy1esR4wiqMvHucr9iw=\",\r\n        \"expYear\": 25,\r\n        \"expMonth\": 12,\r\n        \"mPin\": \"YdNV49Ath90VDnc8lJ09FA==\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://test0.moco.com.np/v400/billpayment/telecom/ntclandline",
+							"protocol": "https",
+							"host": [
+								"test0",
+								"moco",
+								"com",
+								"np"
+							],
+							"path": [
+								"v400",
+								"billpayment",
+								"telecom",
+								"ntclandline"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							"const getTokenRequest = {\r",
+							"     method: 'POST',\r",
+							"    url: 'https://test0.moco.com.np/v400/user/authentication',\r",
+							"    header: {\r",
+							"        'content-type': 'application/x-www-form-urlencoded',\r",
+							"        'content-type': 'application/json',\r",
+							"        'X-MOCO-DEVICE': '9C1ED16E-CABF-47FB-9992-790F23A68D6A'\r",
+							"    },\r",
+							"  body: {\r",
+							"      mode: 'urlencoded',\r",
+							"      urlencoded: [\r",
+							"        { key: 'platform', value: 'IOS' },\r",
+							"        { key: 'model', value: 'iphone 13,2' },\r",
+							"        { key: 'id', value: '9860933917' },\r",
+							"        { key: 'mpin', value: '123456' },\r",
+							"        { key: 'pushToken', value: 'abcdef' },\r",
+							"      ]\r",
+							"  }\r",
+							"};\r",
+							"\r",
+							"pm.sendRequest(getTokenRequest, (err, response) => {\r",
+							"pm.request.headers.add({key: 'X-MOCO-AUTH-TOKEN', value: response.headers.get('X-MOCO-AUTH-TOKEN') });\r",
+							"});"
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Aggregator reconcile",
+			"item": [
+				{
+					"name": "Reconcile balance",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-MOCO-DEVICE",
+								"value": "9C1ED16E-CABF-47FB-9992-790F23A68D6A",
+								"type": "text"
+							},
+							{
+								"key": "X-MOCO-AUTH-TOKEN",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "\r\n\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://test0.moco.com.np/v400/billpayment/telecom/internal/api?aggregator=khalti&startDate=2023-06-18&endDate=2025-06-22",
+							"protocol": "https",
+							"host": [
+								"test0",
+								"moco",
+								"com",
+								"np"
+							],
+							"path": [
+								"v400",
+								"billpayment",
+								"telecom",
+								"internal",
+								"api"
+							],
+							"query": [
+								{
+									"key": "aggregator",
+									"value": "khalti"
+								},
+								{
+									"key": "startDate",
+									"value": "2023-06-18"
+								},
+								{
+									"key": "endDate",
+									"value": "2025-06-22"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							"const getTokenRequest = {\r",
+							"     method: 'POST',\r",
+							"    url: 'https://test0.moco.com.np/v400/user/authentication',\r",
+							"    header: {\r",
+							"        'content-type': 'application/x-www-form-urlencoded',\r",
+							"        'content-type': 'application/json',\r",
+							"        'X-MOCO-DEVICE': '9C1ED16E-CABF-47FB-9992-790F23A68D6A'\r",
+							"    },\r",
+							"  body: {\r",
+							"      mode: 'urlencoded',\r",
+							"      urlencoded: [\r",
+							"        { key: 'platform', value: 'IOS' },\r",
+							"        { key: 'model', value: 'iphone 13,2' },\r",
+							"        { key: 'id', value: '9860933917' },\r",
+							"        { key: 'mpin', value: '123456' },\r",
+							"        { key: 'pushToken', value: 'abcdef' },\r",
+							"      ]\r",
+							"  }\r",
+							"};\r",
+							"\r",
+							"pm.sendRequest(getTokenRequest, (err, response) => {\r",
+							"pm.request.headers.add({key: 'X-MOCO-AUTH-TOKEN', value: response.headers.get('X-MOCO-AUTH-TOKEN') });\r",
+							"});"
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
